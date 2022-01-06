@@ -1,5 +1,21 @@
-const precioOriginal = 100;
-const descuento = 15;
+// const precioOriginal = 100;
+// const descuento = 15;
+
+
+const coupons = [
+    {
+        name: "cupon1",
+        discount: 15,
+    },
+    {   
+        name: "cupon2",
+        discount: 20,
+    },
+    {   
+        name: "cupon3",
+        discount: 10,
+    },
+];
 
 
 function calcularPrecioDescuento(precio, descuento)
@@ -7,22 +23,40 @@ function calcularPrecioDescuento(precio, descuento)
     const porcentajeConDescuento = 100 - descuento;
     const precioConDescuento = (precio * porcentajeConDescuento)/100;
 
-    return precioConDescuento;
+    return Number(precioConDescuento);
 }
 
 
 function onClickDiscountCalculator()
 {
     const inputPrice = document.getElementById("InputPrice");
-    const priceValue = inputPrice.value;
+    const priceValue = Number(inputPrice.value);
     
     const inputDiscount = document.getElementById("InputDiscount");
     const discountValue = inputDiscount.value;
 
-    const precioConDescuento = calcularPrecioDescuento(priceValue, discountValue);
+    const isCouponValid = function (coupon)
+    {
+        return coupon.name === coupon.value;
+    };
 
-    const resultP = document.getElementById("ResultP");
-    resultP.innerText = "El precio con descuento es: $"+precioConDescuento;
+    const userCoupon = coupons.find(isCouponValid);
+
+    const userCoupon = isCouponValid(discountValue);
+
+    if (!userCoupon)
+    {
+        alert("El cupon " + discountValue + " no es valido");
+    }
+    else 
+    {
+        const descuento = Number(userCoupon.discount);
+
+        const precioConDescuento = Number(calcularPrecioDescuento(Number(priceValue), Number(descuento)));
+
+        const resultP = document.getElementById("ResultP");
+        resultP.innerText = "El precio con descuento es: $"+Number(precioConDescuento);
+    }
 }
 
 // console.log({
