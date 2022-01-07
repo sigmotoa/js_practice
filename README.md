@@ -16,3 +16,10 @@
 - Implementar en Javascript.
 - Crear las Funciones.
 - Integracion con HTML.
+
+## taller numero 3: Medidas estadisticas.
+
+- Definir las formulas. (Promedio/Mediana/Moda)
+- Implementar las formulas.
+- Crear las Funciones.
+- Integrar con HTML.
